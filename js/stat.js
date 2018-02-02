@@ -9,7 +9,7 @@ var GAP_GISTO_TEXT = 20;
 var GISTO_WIDTH = 40;
 var GISTO_STEP = GISTO_WIDTH + 50;
 var GISTO_HEIGHT = 150;
-
+var rand = Math.random();
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -37,20 +37,16 @@ var renderStatistics = function (ctx, names, times) {
   ctx.fillText('Ура вы победили!', 235, 30);
   ctx.fillText('Список результатов:', 220, 50);
 
-  ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-  ctx.fillText('Вы', CLOUD_X + GAP_GISTO_X, CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_TEXT);
-  ctx.fillRect(CLOUD_X + GAP_GISTO_X, CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_Y, GISTO_WIDTH, -100);
-
   var maxTime = getMaxElement(times);
 
+  for (var i = 0; i < names.length; i++) {
+    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+  ctx.fillText(names[i], CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_TEXT);
+  ctx.fillRect(CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_Y, GISTO_WIDTH, (-GISTO_HEIGHT * times[i]) / maxTime);
+  ctx.fillText(String(times[i]), CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], (-GISTO_HEIGHT * times[i]) / maxTime - GAP_GISTO_TEXT);
 
-
-  for (var i = 0; i < players.length; i++) {
-    ctx.fillStyle = '#00F';
-    ctx.fillText(players[i], CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_TEXT);
-    ctx.fillRect(CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_Y, GISTO_WIDTH, (-GISTO_HEIGHT * times[i])/maxTime);
-  }
-
+}
   };
+
 
 
