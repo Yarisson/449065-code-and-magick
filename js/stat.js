@@ -1,23 +1,23 @@
-var CLOUD_WIDTH = 420;
-var CLOUD_HEIGHT = 270;
-var CLOUD_X = 100;
-var CLOUD_Y = 10;
-var GAP = 10;
-var GAP_GISTO_X = 40;
-var GAP_GISTO_Y = 40;
-var GAP_GISTO_TEXT = 20;
-var GISTO_WIDTH = 40;
-var GISTO_STEP = GISTO_WIDTH + 50;
-var GISTO_HEIGHT = 150;
-var GISTO_GAP_TIMES = 25;
-var rand = Math.random();
+var CLOUD_WIDTH = 420;  /** Ширина облака  */
+var CLOUD_HEIGHT = 270; /** Высота облака  */
+var CLOUD_X = 100; /** Начальная координата облака по горизонтали  */
+var CLOUD_Y = 10; /** Начальная координата облака по вертикали  */
+var GAP = 10; /** Отступ для тени облака  */
+var GAP_GISTO_X = 40; /** Отступ по горизонтали от края поля облака для колонки гистограммы  */
+var GAP_GISTO_Y = 40; /** Отступ по вертикали от края поля облака для колонки гистограммы  */
+var GAP_GISTO_TEXT = 20; /** Отступ для текста  */
+var GISTO_WIDTH = 40; /** Ширина колонки гистограммы */
+var GISTO_STEP = GISTO_WIDTH + 50; /** Горизонтальный отступ между колонками гистограммы  */
+var GISTO_HEIGHT = 150; /** Максимальная высота колонки гистограммы  */
+var GISTO_GAP_TIMES = 25; /** Отступ по вертикали для статистики гистограммы  */
+var rand = Math.random(); /** переменная, определяющая случайное значение  */
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
-  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
+  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);   /** Функция рисующая облако  */
 };
 
-var getMaxElement = function(arr) {
+var getMaxElement = function(arr) { /** Функция определения максимального значения элемента массива для определения времени  */
   var maxElement = arr[0];
 
   for (var i = 0; i < arr.length; i++) {
@@ -27,6 +27,10 @@ var getMaxElement = function(arr) {
   }
 
   return maxElement;
+};
+
+var find = function(array, value) {
+  return array.indexOf(value);
 };
 
 var renderStatistics = function (ctx, names, times) {
@@ -41,10 +45,14 @@ var renderStatistics = function (ctx, names, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < names.length; i++) {
-    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+
+    ctx.fillStyle = 'rgba(0, 0, 171, 1)';
   ctx.fillText(names[i], CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_TEXT);
   ctx.fillRect(CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_Y, GISTO_WIDTH, (-GISTO_HEIGHT * times[i]) / maxTime);
   ctx.fillText(Math.round(times[i]), CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_TEXT - (GISTO_HEIGHT * times[i] / maxTime) - GISTO_GAP_TIMES );
+
+    var findName = find(names, 'Вы')
+    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
 }
   };
 
