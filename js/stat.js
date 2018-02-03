@@ -29,6 +29,17 @@ var getMaxElement = function(arr) { /** Функция определения м
   return maxElement;
 };
 
+ColorGisto = function(array, ctx) {
+  for (var i = 0; i< array.length; i++) {
+    if (array[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    }
+    else {
+      ctx.fillStyle = 'rgba(0, 0, 171, rand + " ")';
+    }
+  }
+};
+
 var find = function(array, value) {
   return array.indexOf(value);
 };
@@ -46,14 +57,13 @@ var renderStatistics = function (ctx, names, times) {
 
   for (var i = 0; i < names.length; i++) {
 
-    ctx.fillStyle = 'rgba(0, 0, 171, 1)';
-  ctx.fillText(names[i], CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_TEXT);
-  ctx.fillRect(CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_Y, GISTO_WIDTH, (-GISTO_HEIGHT * times[i]) / maxTime);
-  ctx.fillText(Math.round(times[i]), CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_TEXT - (GISTO_HEIGHT * times[i] / maxTime) - GISTO_GAP_TIMES );
 
-    var findName = find(names, 'Вы')
-    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-}
+    ctx.fillText(names[i], CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_TEXT);
+    ctx.fillRect(CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_Y, GISTO_WIDTH, (-GISTO_HEIGHT * times[i]) / maxTime);
+    ctx.fillText(Math.round(times[i]), CLOUD_X + GAP_GISTO_X + GISTO_STEP * [i], CLOUD_Y + CLOUD_HEIGHT - GAP_GISTO_TEXT - (GISTO_HEIGHT * times[i] / maxTime) - GISTO_GAP_TIMES);
+
+  }
+  var ColorName = ColorGisto(names, ctx);
   };
 
 
