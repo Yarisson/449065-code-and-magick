@@ -1,4 +1,4 @@
-var CLOUD_WIDTH = 420;  // Ширина облака
+var CLOUD_WIDTH = 420; // Ширина облака
 var CLOUD_HEIGHT = 270; // Высота облака
 var CLOUD_X = 100; // Начальная координата облака по горизонтали
 var CLOUD_Y = 10; // Начальная координата облака по вертикали
@@ -14,10 +14,10 @@ var rand = Math.random(); // переменная, определяющая сл
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
-  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);   // Функция рисующая облако
+  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT); // Функция рисующая облако
 };
 
-var getMaxElement = function(arr) { // Функция определения максимального значения элемента массива для определения времени
+var getMaxElement = function (arr) { // Функция определения максимального значения элемента массива для определения времени
   var maxElement = arr[0];
 
   for (var i = 0; i < arr.length; i++) {
@@ -29,7 +29,7 @@ var getMaxElement = function(arr) { // Функция определения м�
   return maxElement;
 };
 
-var randomColor = function() {
+var randomColor = function () {
   return rand + '';
 };
 
@@ -46,7 +46,7 @@ var renderStatistics = function (ctx, names, times) {
 
   for (var i = 0; i < names.length; i++) {
     var randomFirst = randomColor();
-    ctx.fillStyle = 'rgba(0, 0, 171, 1)'
+     ctx.fillStyle = 'rgba(0, 0, 171, 1)'
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     }
@@ -56,4 +56,4 @@ var renderStatistics = function (ctx, names, times) {
 
   }
 
-  };
+};
