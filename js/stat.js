@@ -1,3 +1,4 @@
+'use strict';
 var CLOUD_WIDTH = 420; // Ширина облака
 var CLOUD_HEIGHT = 270; // Высота облака
 var CLOUD_X = 100; // Начальная координата облака по горизонтали
@@ -10,7 +11,6 @@ var GISTO_WIDTH = 40; // Ширина колонки гистограммы
 var GISTO_STEP = GISTO_WIDTH + 50; // Горизонтальный отступ между колонками гистограммы
 var GISTO_HEIGHT = 150; // Максимальная высота колонки гистограммы
 var GISTO_GAP_TIMES = 25; // Отступ по вертикали для статистики гистограммы
-var rand = Math.random(); // переменная, определяющая случайное значение
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
