@@ -29,10 +29,6 @@ var getMaxElement = function (arr) { // Функция определения м
   return maxElement;
 };
 
-var randomColor = function () {
-  return rand + '';
-};
-
 var renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
@@ -46,9 +42,9 @@ var renderStatistics = function (ctx, names, times) {
 
   for (var i = 0; i < names.length; i++) {
     var fillString = '';
-    var fillColor1 = fillString + 255 * Math.random();
-    var fillColor2 = fillString + 255 * Math.random();
-    var fillColor3 = fillString + 255 * Math.random();
+    var fillColor1 = fillString + Math.round(255 * Math.random());
+    var fillColor2 = fillString + Math.round(255 * Math.random());
+    var fillColor3 = fillString + Math.round(255 * Math.random());
     var randomShadow = Math.random() + '';
     ctx.fillStyle = 'rgba(' + fillColor1 + ', ' + fillColor2 + ', ' + fillColor3 + ', ' + randomShadow + ')';
     if (names[i] === 'Вы') {
