@@ -41,11 +41,10 @@ var renderStatistics = function (ctx, names, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < names.length; i++) {
-    var fillString = '';
-    var fillColor1 = fillString + Math.round(255 * Math.random());
-    var fillColor2 = fillString + Math.round(255 * Math.random());
-    var fillColor3 = fillString + Math.round(255 * Math.random());
-    var randomShadow = Math.random() + '';
+    var fillColor1 = Math.round(255 * Math.random());
+    var fillColor2 = Math.round(255 * Math.random());
+    var fillColor3 = Math.round(255 * Math.random());
+    var randomShadow = Math.random();
     ctx.fillStyle = 'rgba(' + fillColor1 + ', ' + fillColor2 + ', ' + fillColor3 + ', ' + randomShadow + ')';
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
